@@ -4,6 +4,7 @@ using BulkyWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240530085756_AddingCompanyTable")]
+    partial class AddingCompanyTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,38 +96,6 @@ namespace Bulky.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Bangalore",
-                            Name = "Tech Solutions",
-                            PhoneNumber = "9999955522",
-                            PostalCode = "560037",
-                            State = "Karnataka",
-                            StreetAddress = "123 AECS St"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Varanasi",
-                            Name = "Kashi Institute",
-                            PhoneNumber = "9992200000",
-                            PostalCode = "221002",
-                            State = "Uttar Pradesh",
-                            StreetAddress = "231 Kashi St"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Mumbai",
-                            Name = "Comic Store",
-                            PhoneNumber = "5552252365",
-                            PostalCode = "370029",
-                            State = "Maharastra",
-                            StreetAddress = "221B Beaker St"
-                        });
                 });
 
             modelBuilder.Entity("Bulky.Models.Product", b =>
