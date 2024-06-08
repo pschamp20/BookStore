@@ -48,12 +48,6 @@ namespace Bulky.DataAccess.Repository
             return query.FirstOrDefault();
         }
 
-		/*public IEnumerable<T> GetAll()
-		{
-			IQueryable<T> query = dbSet;
-			return query.ToList();
-		}
-*/
 		public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter, string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
