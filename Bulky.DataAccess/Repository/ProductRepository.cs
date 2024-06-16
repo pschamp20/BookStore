@@ -31,10 +31,7 @@ namespace Bulky.DataAccess.Repository
                 objFromDb.Price = obj.Price;
                 objFromDb.ListPrice = obj.ListPrice;
                 objFromDb.CategoryId = obj.CategoryId;
-                if (obj.ImageUrl != null)
-                {
-                    objFromDb.ImageUrl = obj.ImageUrl;
-                }
+                objFromDb.ProductImages = obj.ProductImages;
             }
         }
     }
