@@ -188,7 +188,6 @@ namespace BulkyWeb.Areas.Admin.Controllers
                     _unitOfWork.Save();
                 }
             }
-
             return View(orderHeaderId);
         }
 
@@ -229,7 +228,6 @@ namespace BulkyWeb.Areas.Admin.Controllers
 				default:
 					break;
 			}
-
 			return Json(new { data = objOrderHeaders });
 		}
 

@@ -32,6 +32,5 @@ namespace BulkyWeb.ViewComponents
                 return View(0);
             }
         }
-
     }
 }

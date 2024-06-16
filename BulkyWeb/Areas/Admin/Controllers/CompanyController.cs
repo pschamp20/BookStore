@@ -37,6 +37,7 @@ namespace BulkyWeb.Areas.Admin.Controllers
 			}
 			
 		}
+
 		[HttpPost]
 		public IActionResult Upsert(Company CompanyObj) 
 		{
@@ -57,8 +58,6 @@ namespace BulkyWeb.Areas.Admin.Controllers
 			{
 				return View(CompanyObj);
 			}
-			
-
 		}
 
 		#region API CALLS

@@ -46,8 +46,8 @@ namespace BulkyWeb.Areas.Admin.Controllers
 				productVM.Product = _unitOfWork.Product.Get(u => u.Id == id, includeProperties:"ProductImages");
 				return View(productVM);
 			}
-			
 		}
+
 		[HttpPost]
 		public IActionResult Upsert(ProductVM productVM, List<IFormFile> files) 
 		{
@@ -63,11 +63,9 @@ namespace BulkyWeb.Areas.Admin.Controllers
 				}
 				_unitOfWork.Save();
 
-
 				string wwwRootPath = _webHostEnvironment.WebRootPath;
 				if (files != null)
 				{
-
 					foreach (IFormFile file in files)
 					{
 						string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
@@ -92,7 +90,6 @@ namespace BulkyWeb.Areas.Admin.Controllers
 							productVM.Product.ProductImages = new List<ProductImage>();
 
 						productVM.Product.ProductImages.Add(productImage);
-
 					}
 
 					_unitOfWork.Product.Update(productVM.Product);
@@ -100,7 +97,8 @@ namespace BulkyWeb.Areas.Admin.Controllers
 				}
 					TempData["success"] = "Product created/updated successfully";
 					return RedirectToAction("Index");
-			} else
+			} 
+			else
 			{
 				productVM.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
 				{
@@ -125,13 +123,10 @@ namespace BulkyWeb.Areas.Admin.Controllers
 						System.IO.File.Delete(oldImagePath);
 					}
 				}
-
 				_unitOfWork.ProductImage.Remove(imageToBeDeleted);
 				_unitOfWork.Save();
-
 				TempData["success"] = "Image Deleted Successfully";
 			}
-
 			return RedirectToAction(nameof(Upsert), new {id=productId});
 		}
 
